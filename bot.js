@@ -2987,7 +2987,7 @@ client.on('message', async message => {
       .addField('# - تم انشاء الدعوة',moment(inv.createdAt).format('YYYY/M/DD:h'),true)
       .addField('# - مدة الدعوة',moment(inv.maxAge).format('DD **ساعة** h **يوم**'),true)
       .addField('# - الاستخدامات',inv.uses || inv.maxUses,true)
-      message.channel.send(inv);
+      message.channel.send(iNv);
     });
   }
 });
