@@ -35,7 +35,7 @@ var ti={}
 
 client.on('ready', function(){
     var ms = 60000 ;
-    var setGame = ['phelp','Type phelp'];
+    var setGame = ['By:LEoN','Type phelp'];
     var i = -1;
     var j = 0;
     setInterval(function (){
