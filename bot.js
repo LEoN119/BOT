@@ -2701,15 +2701,15 @@ client.on('message', async msg => { // eslint-disable-line
 //by ,LEoN 'CODES SERVER'
 	if (command === `play`) {
 		const voiceChannel = msg.member.voiceChannel;
-		if (!voiceChannel) return msg.channel.send('يجب توآجد حضرتك بروم صوتي .');
+		if (!voiceChannel) return msg.channel.send('يجب توآجدك بروم صوتي .');
 		const permissions = voiceChannel.permissionsFor(msg.client.user);
 		if (!permissions.has('CONNECT')) {
-			//by LEoN 'CODES SERVER'
+			//by Xx_LEoN_xX#2178 'CODES SERVER'
 			return msg.channel.send('لا يتوآجد لدي صلاحية للتكلم بهذآ الروم');
-		}//by LEoN 'CODES SERVER'
+		}//by Xx_LEoN_xX#2178 'CODES SERVER'
 		if (!permissions.has('SPEAK')) {
 			return msg.channel.send('لا يتوآجد لدي صلاحية للتكلم بهذآ الروم');
-		}//by LEoN 'CODES SERVER'
+		}//by Xx_LEoN_xX#2178 'CODES SERVER'
 
 		if (!permissions.has('EMBED_LINKS')) {
 			return msg.channel.sendMessage("**يجب توآفر برمشن `EMBED LINKS`لدي **")
