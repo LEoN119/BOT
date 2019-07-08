@@ -46,7 +46,7 @@ client.on('ready', function(){
             j = -1;
         }
         i = i+j;
-        client.user.setGame(setGame[i],`https://www.youtube.com/watch?v=4JIAp8BPCmA`);
+        client.user.setGame(setGame[i],`https://www.youtube.com/channel/UCslo3BB-0Bkjt1P8WDwKYeg?view_as=subscriber`);
     }, ms);
     console.log(` ????????? |> Name: ${client.user.username}`);
  console.log(` ????????? |> Servers: ${client.guilds.size}`);
