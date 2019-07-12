@@ -62,35 +62,35 @@ if (message.content.startsWith(prefix + 'help')) { /// This is The DMS Code Send
     let pages = [`**
         ***__General orders__***
 **
-${prefix}allbots/لعرض جميع البوتات الي بالسيرفر
-${prefix}server/يعرض لك معلومات عن السيرفر
-${prefix}bot/يعرض لك كل معلومات البوت
-${prefix}count/يعرض لك عدد الاشخاص بالسيرفر بدون بوتات
-${prefix}invites/ يعرض لك  عدد انفايتاتك بالسيرفر 
-${prefix}invinfo <invitelink here> / لمعلومات عن الدعوه
- مثال : invinfo m82n8P
-${prefix}invite-codes/يعرض لك روابط الانفايتات حكك في السيرفر 
-${prefix}cal/اله حاسبة
-${prefix}trans <language> <any thing>/يترجم لك الي تبيه من اي لغة
-${prefix}short/يختصر لك رابط كبير الى رابط صغير
-${prefix}tag/يكتب لك الكلمة بشكل جميل وكبير
-${prefix}google/للبحث في قوقل عن طريق الدسكورد
-${prefix}perms/يعرض لك برمشناتك بالسيرفر
-${prefix}z5rf/يزخرف لك كلمة او جملة
-${prefix}rooms/يعرض لك كل الرومات الي بالسيرفر مع عددها
-${prefix}roles/يعرض لك كل الرانكات بالسيرفر بشكل جميل
-${prefix}emojilist/يعرض لك كل الايموجيات الي بالسيرفر
-${prefix}say/يكرر الكلام الي تكتبو
-${prefix}image/صورة السيرفر
-${prefix}members/عرض لك عدد كل حالات الاشخاص وعدد البوتات وعدد الاشخاص
-${prefix}id/معلومات عنك
-${prefix}bans / عدد الاشخاص المبندة 
-${prefix}avatar/صورتك او صورة الي تمنشنو
-${prefix}embed/يكرر الي تقولو بشكل حلو
-${prefix}emoji <any things>/لتحويل اي كلمه تقولها الي ايموجي
-${prefix}inv/لدعوة البوت الى سيرفرك
-${prefix}support/سيرفر الدعم
-${prefix}contact/ارسال اقتراح او لمراسلة صاحب البوت
+${prefix}allbots/To Show All Bots In Server
+${prefix}server/To Show Server Informations
+${prefix}bot/To Show Bots informations
+${prefix}count/To show the count of people in the server
+${prefix}invites/ To Show Your Invites In Server
+${prefix}invinfo <invitelink here> / For information About Invite
+ مثال : invinfo LEoN
+${prefix}invite-codes/ Shows your invite links in the server 
+${prefix}cal/ calculator
+${prefix}trans <language> <any thing>/ It translates you into a spell of any language
+${prefix}short/ Shorten you a big link to a small link
+${prefix}tag/Write you the word beautifully and bigger
+${prefix}google/ TO Serch In Google
+${prefix}perms/ To Show Your Permissions
+${prefix}z5rf/ To decorate what You wrote
+${prefix}rooms/It shows you all the rooms in the server with their count
+${prefix}roles/It shows you all the ranks in the server beautifully
+${prefix}emojilist/ To Show All Emojis In Server
+${prefix}say/ To Repeat What you say
+${prefix}image/ Server Picture
+${prefix}members/Show you the number of all cases of people and the number of bots and the number of people
+${prefix}id/Informations about you
+${prefix}bans / To Show The Banned People
+${prefix}avatar/ Show you your photo or someone else's photo 
+${prefix}embed/Repeat what you say beautifully
+${prefix}emoji <any things>/ Convert any word you type into emoji
+${prefix}inv/To Invite Bot To your Server
+${prefix}support/Support server
+${prefix}contact/To contact bot owner
 **
   `
 ,`
@@ -312,7 +312,7 @@ client.on('message', function(msg) {
 });
  client.on('message', message => {
               if (!message.channel.guild) return;
-      if(message.content =='G.count')
+      if(message.content =='=count')
 	 
       message.reply(`**${message.guild.memberCount}**`);
     });
@@ -379,14 +379,14 @@ client.on('message', msg => {
 };
 });
 client.on('message', message => {
-    if (message.content.startsWith("G.trans")) {
+    if (message.content.startsWith("=trans")) {
       
     let toTrans = message.content.split(' ').slice(1);
     let language;
 
     language = toTrans[toTrans.length - 2] === 'to' ? toTrans.slice(toTrans.length - 2, toTrans.length)[1].trim() : undefined;
     if (!language) {
-        return message.reply(`Please supply valid agruments.\n**Example** \`G.trans [text] to [language]\``);
+        return message.reply(`Please supply valid agruments.\n**Example** \`=trans [text] to [language]\``);
     }
     let finalToTrans = toTrans.slice(toTrans.length - toTrans.length, toTrans.length - 2).join(' ');
     translate(finalToTrans, {to: language}).then(res => {
@@ -485,7 +485,7 @@ if (command == "z5rf") {
 });
 
 client.on('message', message => {
-    if (message.content === "G.rooms") {
+    if (message.content === "=rooms") {
         if (message.author.bot) return
                       if (!message.guild) return;
 
@@ -649,13 +649,13 @@ message.channel.send({embed});
 }
 });
 client.on('message', message => {
-    if (message.content.startsWith("G.bans")) {
+    if (message.content.startsWith("=bans")) {
         message.guild.fetchBans()
         .then(bans => message.channel.send(`Number of banned persons **${bans.size}** `))
 }
 });
 client.on('message', message => {
-    if (message.content.startsWith("G.avatar")) {
+    if (message.content.startsWith("=avatar")) {
 if(!message.channel.guild) return;
         var mentionned = message.mentions.users.first();
     var client;
@@ -711,11 +711,11 @@ message.channel.send(
 
 
    client.on('message', message => {
-     if (message.content === "support") {
+     if (message.content === "=support") {
      let embed = new Discord.RichEmbed()
   .setAuthor(message.author.username)
   .setColor("#9B59B6")
-  .addField(" ** :gear: Server Support :gear: **" , "  **https://discord.gg/xA8s2AU**")
+  .addField(" ** :gear: Server Support :gear: **" , "  **https://discord.gg/PBZyM8H**")
      
      
   message.channel.sendEmbed(embed);
@@ -1296,7 +1296,7 @@ if(bz.content.startsWith(prefix + 'make')) {
        });
 client.on('message', message => {
           let args = message.content.split(' ').slice(1);
-   if(message.content.split(' ')[0] == 'G.color'){
+   if(message.content.split(' ')[0] == '=color'){
            const embedd = new Discord.RichEmbed()
      .setFooter('Requested by '+message.author.username, message.author.avatarURL)
    .setDescription(`**There's No Color With This Number ** :x: `)
@@ -1403,7 +1403,7 @@ msg.channel.send(embed).then(() => {
          const sh = new Discord.RichEmbed()
 .setColor("04791c")
 .setDescription('**? |Good Job +1P**')
-.addField('Type G.mypoints', 'To Show ur Points' , true)
+.addField('Type =mypoints', 'To Show ur Points' , true)
 .setFooter(message.author.username, message.author.avatarURL)
 message.channel.sendEmbed(sh);
         let won = collected.first().author;
@@ -1466,7 +1466,7 @@ client.on('message', message => {
     if (!points[message.author.id]) points[message.author.id] = { 
         points: 0,
       };
-    if (message.content == "G.ايموجى") { 
+    if (message.content == "=ايموجى") { 
         if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
     
     const type = require('./emojis.json'); 
@@ -1483,7 +1483,7 @@ m.edit({embed: new Discord.RichEmbed().setTitle('لديك 15 ثانيه للاج
             const sh = new Discord.RichEmbed()
 .setColor("04791c")
 .setDescription('**? |Good Job +1P**')
-.addField('Type G.mypoints', 'To Show ur Points' , true)
+.addField('Type =mypoints', 'To Show ur Points' , true)
 .setFooter(message.author.username, message.author.avatarURL)
 message.channel.sendEmbed(sh);
             console.log(`[Game] ${collected.first().author} Answered with the correct answer`);
@@ -1873,7 +1873,7 @@ msg.channel.send(embed).then(() => {
                   const sh = new Discord.RichEmbed()
   .setColor("04791c")
 .setDescription('**? |Good Job +1P**')
-.addField('Type G.mypoints', 'To Show ur Points' , true)
+.addField('Type =mypoints', 'To Show ur Points' , true)
 .setFooter(message.author.username, message.author.avatarURL)
 message.channel.sendEmbed(sh);
             let won = collected.first().author; // في هذا السطر يقوم الكود بسحب الأي دي الذي قام بالأجابة اولاً
@@ -2085,7 +2085,7 @@ msg.channel.send(embed).then(() => {
                   const sh = new Discord.RichEmbed()
 .setColor("04791c")
 .setDescription('**? |Good Job +1P**')
-.addField('Type G.mypoints', 'To Show ur Points' , true)
+.addField('Type =mypoints', 'To Show ur Points' , true)
 .setFooter(message.author.username, message.author.avatarURL)
 message.channel.sendEmbed(sh);
             let won = collected.first().author; // في هذا السطر يقوم الكود بسحب الأي دي الذي قام بالأجابة اولاً
@@ -2104,7 +2104,7 @@ message.channel.sendEmbed(sh);
 });
 client.on('message', message => {
                                 if(!message.channel.guild) return;
-                        if (message.content.startsWith('G.ping')) {
+                        if (message.content.startsWith('=ping')) {
                             if(!message.channel.guild) return;
                             var msg = `${Date.now() - message.createdTimestamp}`
                             var api = `${Math.round(client.ping)}`
@@ -2262,7 +2262,7 @@ msg.channel.send(embed).then(() => {
                   const sh = new Discord.RichEmbed()
 .setColor("04791c")
 .setDescription('**? |Good Job +1P**')
-.setFooter('G.mypoints')
+.setFooter('=mypoints')
 message.channel.sendEmbed(sh);
             let won = collected.first().author; // في هذا السطر يقوم الكود بسحب الأي دي الذي قام بالأجابة اولاً
             points[won.id].points++;
@@ -2459,7 +2459,7 @@ const zead = [
    '*** انتظر الجزء الثاني عندما يوصل البوت 100 سيرفر , ساعدني في نشر البوت وادخل هذا السيرفر  ***'
 ];
  client.on('message', message => {
- if (message.content.startsWith('G.مريم')) {
+ if (message.content.startsWith('=mariam')) {
   var mariam= new Discord.RichEmbed()
   .setTitle("لعبة مريم ..")
   .setColor('RANDOM')
@@ -2535,7 +2535,7 @@ var Za7f = [
 ];
 
 client.on('message', message => {
- if (message.content.startsWith("G.عقاب")) {
+ if (message.content.startsWith("=pun")) {
               if(!message.channel.guild) return message.reply('** This command only for servers**');
 var embed = new Discord.RichEmbed()
 .setColor('RANDOM')
@@ -2701,14 +2701,14 @@ client.on('message', async msg => { // eslint-disable-line
 //by ,$ ReBeL ء , ??#4777 'CODES SERVER'
 	if (command === `play`) {
 		const voiceChannel = msg.member.voiceChannel;
-		if (!voiceChannel) return msg.channel.send('يجب توآجد حضرتك بروم صوتي .');
+		if (!voiceChannel) return msg.channel.send('You are not in voice channel');
 		const permissions = voiceChannel.permissionsFor(msg.client.user);
 		if (!permissions.has('CONNECT')) {
 			//by ,$ ReBeL ء , ??#4777 'CODES SERVER'
-			return msg.channel.send('لا يتوآجد لدي صلاحية للتكلم بهذآ الروم');
+			return msg.channel.send('Idont have Permissions To talk in this room');
 		}//by ,$ ReBeL ء , ??#4777 'CODES SERVER'
 		if (!permissions.has('SPEAK')) {
-			return msg.channel.send('لا يتوآجد لدي صلاحية للتكلم بهذآ الروم');
+			return msg.channel.send('Idont have Permissions To talk in this room');
 		}//by ,$ ReBeL ء , ??#4777 'CODES SERVER'
 
 		if (!permissions.has('EMBED_LINKS')) {
@@ -2723,7 +2723,7 @@ client.on('message', async msg => { // eslint-disable-line
 				const video2 = await youtube.getVideoByID(video.id); // eslint-disable-line no-await-in-loop
 				await handleVideo(video2, msg, voiceChannel, true); // eslint-disable-line no-await-in-loop
 			}//by ,$ ReBeL ء , ??#4777 'CODES SERVER'
-			return msg.channel.send(` **${playlist.title}** تم الإضآفة إلى قأئمة التشغيل`);
+			return msg.channel.send(` **${playlist.title}** Done : Added to playlist`);
 		} else {
 			try {//by ,$ ReBeL ء , ??#4777 'CODES SERVER'
 
@@ -3524,5 +3524,15 @@ client.on('guildMemberAdd', member => {
 return channel.send("")
     }
     )});
+	
+client.on('message', async(message) => {
+    if(message.author.juilan || message.channel.type == 'dm') return;
+    let args = message.content.split(' ');
+    if(args[0] == `${prefix}invite`){
+        let inv = await client.generateInvite(['ADMINISTRATOR']);
+        await message.channel.send(`${inv}`);
+    }
+});
+
 client.login(process.env.BOT_TOKEN)
 
